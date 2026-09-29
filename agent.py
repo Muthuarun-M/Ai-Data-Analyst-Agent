@@ -5,6 +5,15 @@ import pandas as pd
 from dotenv import load_dotenv
 from openai import OpenAI
 
+if not api_key:
+    try:
+        api_key = st.secrets["GROQ_API_KEY"]
+    except Exception:
+        api_key = None
+
+if not api_key:
+    raise ValueError("GROQ_API_KEY is not configured.")
+
 
 # =========================================================
 # ENVIRONMENT
